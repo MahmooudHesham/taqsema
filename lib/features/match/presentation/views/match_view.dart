@@ -5,6 +5,6 @@ class MatchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Match histroy')));
+    return const Scaffold(body: Center(child: Text('Match view')));
   }
 }

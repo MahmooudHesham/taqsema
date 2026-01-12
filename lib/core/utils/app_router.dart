@@ -1,13 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:t2sema/features/match/presentation/views/player_selection_view.dart';
+import 'package:t2sema/features/home/presentation/views/home_view.dart';
 
 abstract class AppRouter {
   static final router = GoRouter(
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const PlayerSelectionView(),
-      ),
-    ],
+    routes: [GoRoute(path: '/', builder: (context, state) => const HomeView())],
   );
 }
