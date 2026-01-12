@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_router.dart';
 
@@ -17,7 +16,8 @@ class T2semaApp extends StatelessWidget {
       routerConfig: AppRouter.router,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: AppColors.background,
-        textTheme: GoogleFonts.rubikTextTheme(ThemeData.dark().textTheme).apply(
+        textTheme: ThemeData.dark().textTheme.apply(
+          fontFamily: 'Rubik',
           bodyColor: AppColors.primaryText,
           displayColor: AppColors.primaryText,
         ),
