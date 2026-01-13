@@ -19,7 +19,11 @@ abstract class AppColors {
   static const Color notSelected = _brickEmber;
   static const Color teamA = _brightSky;
   static const Color teamB = _yaleBlue;
-  static const Color action = _brickEmber;
+  static const Color primary = _emerlad;
+  static const Color secondary = _brickEmber;
+
+  static const Color error = _brickEmber;
+  static const Color success = _emerlad;
 
   // Backgrounds
   static const Color background = _inkBlack; // The screen background
