@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
 
 class PlayerImagePicker extends StatelessWidget {
@@ -23,7 +24,7 @@ class PlayerImagePicker extends StatelessWidget {
         height: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 2),
+          border: Border.all(color: AppColors.selected, width: 2),
           color: image == null ? Colors.white.withAlpha(50) : null,
           image: image != null
               ? DecorationImage(image: FileImage(image!), fit: BoxFit.cover)

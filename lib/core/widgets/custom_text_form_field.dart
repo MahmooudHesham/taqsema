@@ -27,10 +27,10 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: AppColors.primaryText.withAlpha(50),
         hintText: hintText,
         hintStyle: AppStyles.textStyleRegular16,
-        enabledBorder: _buildBorder(color: AppColors.primaryText.withAlpha(50)),
-        focusedBorder: _buildBorder(color: AppColors.selected),
-        errorBorder: _buildBorder(color: AppColors.error),
-        focusedErrorBorder: _buildBorder(color: AppColors.error, width: 2.5),
+        enabledBorder: _buildBorder(color: AppColors.selected),
+        focusedBorder: _buildBorder(color: AppColors.selected, width: 3),
+        errorBorder: _buildBorder(color: AppColors.error, width: 2),
+        focusedErrorBorder: _buildBorder(color: AppColors.error, width: 3),
         border: _buildBorder(),
       ),
     );
@@ -39,7 +39,7 @@ class CustomTextFormField extends StatelessWidget {
   OutlineInputBorder _buildBorder({
     double radius = 12,
     Color color = Colors.grey,
-    double width = 1.5,
+    double width = 1,
   }) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(radius),
