@@ -39,26 +39,31 @@ class _PlayerSelectionViewState extends State<PlayerSelectionView> {
           const SizedBox(height: 30),
           Expanded(
             child: ListView.builder(
+              padding: const EdgeInsets.only(bottom: 120),
               itemCount: playerNames.length,
               itemBuilder: (context, index) {
                 final bool isSelected = selectedIndices.contains(index);
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: PlayerCard(
-                    name: playerNames[index],
-                    image: index == 0
-                        ? 'assets/images/IMG-20220820-WA0029-01.jpeg'
-                        : null,
-                    isSelected: isSelected,
-                    onTap: () {
-                      setState(() {
-                        if (isSelected) {
-                          selectedIndices.remove(index);
-                        } else {
-                          selectedIndices.add(index);
-                        }
-                      });
-                    },
+                  child: Column(
+                    children: [
+                      PlayerCard(
+                        name: playerNames[index],
+                        image: index == 0
+                            ? 'assets/images/IMG-20220820-WA0029-01.jpeg'
+                            : null,
+                        isSelected: isSelected,
+                        onTap: () {
+                          setState(() {
+                            if (isSelected) {
+                              selectedIndices.remove(index);
+                            } else {
+                              selectedIndices.add(index);
+                            }
+                          });
+                        },
+                      ),
+                    ],
                   ),
                 );
               },
