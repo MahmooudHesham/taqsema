@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:t2sema/features/history/presentation/views/history_view.dart';
+import 'package:t2sema/features/home/presentation/views/widgets/add_player_button.dart';
 import 'package:t2sema/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:t2sema/features/home/presentation/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:t2sema/features/match/presentation/views/player_selection_view.dart';
@@ -24,9 +25,9 @@ class _HomeViewState extends State<HomeView> {
       body: Stack(
         children: [
           _pages[currentIndex],
+          const Positioned(left: 30, bottom: 125, child: AddPlayerButton()),
           Align(
             alignment: Alignment.bottomCenter,
-
             child: Padding(
               padding: const EdgeInsets.only(bottom: 30),
               child: CustomBottomNavBar(
