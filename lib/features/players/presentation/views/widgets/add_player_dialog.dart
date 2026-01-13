@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t2sema/core/widgets/custom_button.dart';
 import 'package:t2sema/core/widgets/custom_text_form_field.dart';
 import 'package:t2sema/core/widgets/glass_container.dart';
 import 'package:t2sema/features/players/presentation/views/widgets/player_image_picker.dart';
@@ -14,7 +15,7 @@ class AddPlayerDialog extends StatelessWidget {
       child: GlassContainer(
         opacity: 204,
         width: double.infinity,
-        height: 300,
+        height: 350,
         borderRadius: 12,
         child: Column(
           children: [
@@ -25,15 +26,12 @@ class AddPlayerDialog extends StatelessWidget {
                 children: [
                   CustomTextFormField(
                     hintText: 'Player Name',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Name is required";
-                      }
-                      return null;
-                    },
+                    validator: addPlayerNameValidator,
                   ),
                   const SizedBox(height: 30),
                   PlayerImagePicker(onTap: () {}),
+                  const SizedBox(height: 30),
+                  CustomButton(label: 'Add', onTap: () {}),
                 ],
               ),
             ),
@@ -41,5 +39,12 @@ class AddPlayerDialog extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String? addPlayerNameValidator(value) {
+    if (value == null || value.isEmpty) {
+      return "Name is required";
+    }
+    return null;
   }
 }
