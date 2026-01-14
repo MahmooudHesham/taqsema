@@ -1,55 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:t2sema/features/history/presentation/views/history_view.dart';
-import 'package:t2sema/features/home/presentation/views/widgets/add_player_button.dart';
 import 'package:t2sema/features/home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:t2sema/features/home/presentation/views/widgets/custom_bottom_nav_bar.dart';
-import 'package:t2sema/features/home/presentation/views/widgets/generate_team_button.dart';
-import 'package:t2sema/features/match/presentation/views/player_selection_view.dart';
+import 'package:t2sema/features/home/presentation/views/widgets/home_view_body.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
-
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  int currentIndex = 0;
-  final List<Widget> _pages = [
-    const PlayerSelectionView(),
-    const HistoryView(),
-  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(),
-      body: Stack(
-        children: [
-          _pages[currentIndex],
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                children: [
-                  const AddPlayerButton(),
-                  CustomBottomNavBar(
-                    currentIndex: currentIndex,
-                    onTap: (index) {
-                      setState(() {
-                        currentIndex = index;
-                      });
-                    },
-                  ),
-                  const GenerateTeamButton(),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+    return const Scaffold(appBar: CustomAppBar(), body: HomeViewBody());
   }
 }
