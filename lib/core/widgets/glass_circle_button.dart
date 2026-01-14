@@ -19,7 +19,6 @@ class GlassCircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassContainer(
-      blurStrength: 1.5,
       width: size,
       height: size,
       //padding: EdgeInsets.zero,

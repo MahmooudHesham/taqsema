@@ -10,7 +10,7 @@ class GlassContainer extends StatelessWidget {
     this.height,
     this.padding,
     this.borderRadius = 50,
-    this.blurStrength = 3.0,
+    this.blurStrength = 15.0,
     this.opacity = 25,
     required this.child,
   });

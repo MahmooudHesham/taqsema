@@ -22,7 +22,9 @@ class PlayerCard extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.selected : AppColors.notSelected,
+          color: isSelected
+              ? AppColors.selected.withAlpha(150)
+              : AppColors.notSelected,
           borderRadius: BorderRadius.circular(18),
         ),
         child: PlayerInfo(image: image, name: name, isSelected: isSelected),
