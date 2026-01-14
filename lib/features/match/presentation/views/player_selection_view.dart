@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
-import 'package:t2sema/features/players/presentation/views/widgets/player_card.dart';
+import 'package:t2sema/features/players/presentation/views/widgets/player_list_view.dart';
 
 class PlayerSelectionView extends StatefulWidget {
   const PlayerSelectionView({super.key});
@@ -21,6 +21,7 @@ class _PlayerSelectionViewState extends State<PlayerSelectionView> {
     "Nussairy",
     "MO Salah",
     "Messi",
+    "CR7",
   ];
 
   final Set<int> selectedIndices = {};
@@ -38,39 +39,24 @@ class _PlayerSelectionViewState extends State<PlayerSelectionView> {
           ),
           const SizedBox(height: 30),
           Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.only(bottom: 120),
-              itemCount: playerNames.length,
-              itemBuilder: (context, index) {
-                final bool isSelected = selectedIndices.contains(index);
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Column(
-                    children: [
-                      PlayerCard(
-                        name: playerNames[index],
-                        image: index == 0
-                            ? 'assets/images/IMG-20220820-WA0029-01.jpeg'
-                            : null,
-                        isSelected: isSelected,
-                        onTap: () {
-                          setState(() {
-                            if (isSelected) {
-                              selectedIndices.remove(index);
-                            } else {
-                              selectedIndices.add(index);
-                            }
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                );
-              },
+            child: PlayersListView(
+              playerNames: playerNames,
+              selectedIndices: selectedIndices,
+              onPlayerToggle: _toggleSelection,
             ),
           ),
         ],
       ),
     );
+  }
+
+  void _toggleSelection(int index) {
+    setState(() {
+      if (selectedIndices.contains(index)) {
+        selectedIndices.remove(index);
+      } else {
+        selectedIndices.add(index);
+      }
+    });
   }
 }
