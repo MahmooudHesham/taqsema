@@ -3,12 +3,17 @@ import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
 
 class MatchHistoryCard extends StatelessWidget {
-  const MatchHistoryCard({super.key});
-
+  const MatchHistoryCard({
+    super.key,
+    required this.date,
+    required this.firstScore,
+    required this.secondScore,
+  });
+  final String date;
+  final int firstScore, secondScore;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
       decoration: BoxDecoration(
         color: AppColors.matchHistoryContainer,
         borderRadius: BorderRadius.circular(12),
@@ -18,8 +23,17 @@ class MatchHistoryCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('12/12/2026', style: AppStyles.textStyleLight20),
-            Text('10-6', style: AppStyles.textStyleLight20),
+            Expanded(
+              child: Text(
+                date,
+                style: AppStyles.textStyleLight20,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Text(
+              '$firstScore - $secondScore',
+              style: AppStyles.textStyleSemiBold20,
+            ),
           ],
         ),
       ),
