@@ -21,6 +21,7 @@ abstract class AppColors {
   static const Color teamB = _yaleBlue;
   static const Color primary = _emerlad;
   static const Color secondary = _brickEmber;
+  static const Color matchHistoryContainer = _yaleBlue;
 
   static const Color error = _brickEmber;
   static const Color success = _emerlad;
