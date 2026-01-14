@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MatchView extends StatelessWidget {
-  const MatchView({super.key});
+class GeneratedTeamsView extends StatelessWidget {
+  const GeneratedTeamsView({super.key});
 
   @override
   Widget build(BuildContext context) {
