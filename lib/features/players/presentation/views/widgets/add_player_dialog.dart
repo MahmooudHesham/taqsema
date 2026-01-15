@@ -36,7 +36,8 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
       insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       child: RepaintBoundary(
         child: GlassContainer(
-          opacity: 200,
+          opacity: 180,
+          blurStrength: 2,
           width: double.infinity,
           borderRadius: 12,
           child: Padding(
