@@ -15,7 +15,7 @@ class GeneratedTeamsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
           const SizedBox(height: 30),
@@ -36,7 +36,7 @@ class GeneratedTeamsViewBody extends StatelessWidget {
                 ),
 
                 // Spacing between teams
-                const SizedBox(width: 20),
+                const SizedBox(width: 15),
 
                 // ==== Right Side (Team B)====
                 Expanded(

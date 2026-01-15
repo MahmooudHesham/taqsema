@@ -25,12 +25,12 @@ class CompactPlayerCard extends StatelessWidget {
         children: [
           const Icon(Icons.drag_indicator),
           const SizedBox(width: 2),
-          PlayerPicture(image: image, name: name, radius: 20),
-          const SizedBox(width: 10),
+          PlayerPicture(image: image, name: name, radius: 17),
+          const SizedBox(width: 5),
           Expanded(
             child: Text(
               name,
-              style: AppStyles.textStyleRegular11,
+              style: AppStyles.textStyleRegular14,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
