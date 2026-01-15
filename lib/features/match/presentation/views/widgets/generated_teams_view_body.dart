@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:t2sema/core/utils/app_styles.dart';
 import 'package:t2sema/features/match/presentation/views/widgets/compact_players_list.dart';
+import 'package:t2sema/features/match/presentation/views/widgets/generated_teams_bottom_bar.dart';
 
 class GeneratedTeamsViewBody extends StatelessWidget {
   const GeneratedTeamsViewBody({
@@ -20,16 +22,38 @@ class GeneratedTeamsViewBody extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
+                // ==== Left Side (Team A)====
                 Expanded(
-                  child: CompactPlayersList(names: teamA, isTeamA: true),
+                  child: Column(
+                    children: [
+                      Text("Team A", style: AppStyles.textStyleBold32),
+                      const SizedBox(height: 10),
+                      Expanded(
+                        child: CompactPlayersList(names: teamA, isTeamA: true),
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(width: 30),
+
+                // Spacing between teams
+                const SizedBox(width: 20),
+
+                // ==== Right Side (Team B)====
                 Expanded(
-                  child: CompactPlayersList(names: teamB, isTeamA: false),
+                  child: Column(
+                    children: [
+                      Text("Team B", style: AppStyles.textStyleBold32),
+                      const SizedBox(height: 10),
+                      Expanded(
+                        child: CompactPlayersList(names: teamB, isTeamA: false),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
+          const GeneratedTeamsBottomBar(),
         ],
       ),
     );
