@@ -84,7 +84,7 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
           child: CustomButton(
             label: 'Confirm',
             onTap: () {
-              context.go(AppRouter.kHistoryView);
+              context.go(AppRouter.kHistory, extra: true);
             },
           ),
         ),
