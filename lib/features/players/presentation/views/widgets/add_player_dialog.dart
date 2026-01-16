@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:t2sema/core/widgets/custom_button.dart';
 import 'package:t2sema/core/widgets/custom_text_form_field.dart';
-import 'package:t2sema/core/widgets/glass_container.dart';
 import 'package:t2sema/features/players/presentation/views/widgets/player_image_picker.dart';
 
 class AddPlayerDialog extends StatefulWidget {
@@ -31,47 +30,34 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      backgroundColor: Colors.transparent,
-      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
-      child: RepaintBoundary(
-        child: GlassContainer(
-          opacity: 180,
-          blurStrength: 2,
-          width: double.infinity,
-          borderRadius: 12,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
-            child: Form(
-              key: formKey,
-              autovalidateMode: autovalidateMode,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CustomTextFormField(
-                    hintText: 'Player Name',
-                    controller: nameController,
-                    validator: _validateName,
-                  ),
-                  const SizedBox(height: 30),
-                  PlayerImagePicker(
-                    onTap: () {
-                      // TODO: Implement image selection
-                    },
-                  ),
-                  const SizedBox(height: 30),
-                  Center(
-                    child: CustomButton(
-                      label: 'Add',
-                      onTap: () {
-                        _onAddPlayer(context);
-                      },
-                    ),
-                  ),
-                ],
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomTextFormField(
+              hintText: 'Player Name',
+              controller: nameController,
+              validator: _validateName,
+            ),
+            const SizedBox(height: 30),
+            PlayerImagePicker(
+              onTap: () {
+                // TODO: Implement image selection
+              },
+            ),
+            const SizedBox(height: 30),
+            Center(
+              child: CustomButton(
+                label: 'Add',
+                onTap: () {
+                  _onAddPlayer(context);
+                },
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -94,28 +80,4 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
     }
     return null;
   }
-}
-
-void showAddPlayerDialog(BuildContext context) {
-  showGeneralDialog(
-    context: context,
-    barrierDismissible: true,
-    barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-    barrierColor: Colors.black.withAlpha(150),
-    transitionDuration: const Duration(milliseconds: 200),
-    pageBuilder: (context, animation, secondaryAnimation) {
-      return const AddPlayerDialog();
-    },
-    transitionBuilder: (context, animation, secondaryAnimation, child) {
-      final curvedAnimation = CurvedAnimation(
-        parent: animation,
-        curve: Curves.easeOutCubic,
-        reverseCurve: Curves.easeInCubic,
-      );
-      return ScaleTransition(
-        scale: Tween<double>(begin: 0.8, end: 1.0).animate(curvedAnimation),
-        child: FadeTransition(opacity: curvedAnimation, child: child),
-      );
-    },
-  );
 }
