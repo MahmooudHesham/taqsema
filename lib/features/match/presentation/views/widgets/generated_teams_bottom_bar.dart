@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
 import 'package:t2sema/core/widgets/custom_button.dart';
+import 'package:t2sema/core/widgets/glass_dialog.dart';
+import 'package:t2sema/features/home/presentation/views/widgets/match_result_dialog.dart';
 
 class GeneratedTeamsBottomBar extends StatelessWidget {
   const GeneratedTeamsBottomBar({super.key});
@@ -22,7 +24,16 @@ class GeneratedTeamsBottomBar extends StatelessWidget {
           child: _ActionBtn(
             label: "Finish Match",
             color: AppColors.primary.withAlpha(200),
-            onTap: () {},
+            onTap: () {
+              showAppDialog(
+                context: context,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 20,
+                ),
+                child: const MatchResultDialog(),
+              );
+            },
           ),
         ),
       ],
