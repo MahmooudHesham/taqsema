@@ -15,6 +15,41 @@ class CompactPlayerCard extends StatelessWidget {
   final bool teamA;
   @override
   Widget build(BuildContext context) {
+    return LongPressDraggable<String>(
+      data: name,
+      delay: const Duration(milliseconds: 100),
+      feedback: Material(
+        color: Colors.transparent,
+        child: Opacity(
+          opacity: 0.9,
+          child: SizedBox(
+            width: 180,
+            child: _CardContent(teamA: teamA, image: image, name: name),
+          ),
+        ),
+      ),
+      childWhenDragging: Opacity(
+        opacity: 0.3,
+        child: _CardContent(teamA: teamA, image: image, name: name),
+      ),
+      child: _CardContent(teamA: teamA, image: image, name: name),
+    );
+  }
+}
+
+class _CardContent extends StatelessWidget {
+  const _CardContent({
+    required this.teamA,
+    required this.image,
+    required this.name,
+  });
+
+  final bool teamA;
+  final String? image;
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: teamA ? AppColors.teamA : AppColors.teamB,
