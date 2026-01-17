@@ -17,7 +17,7 @@ class PlayersRepoImpl extends PlayersRepo {
   }
 
   @override
-  List<PlayerModel> getAllPlayers() {
+  Future<List<PlayerModel>> getAllPlayers() async {
     var box = Hive.box<PlayerModel>(kPlayersBox);
     return box.values.toList();
   }
