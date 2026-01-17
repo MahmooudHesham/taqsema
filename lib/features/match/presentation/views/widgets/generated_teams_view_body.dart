@@ -64,7 +64,7 @@ class _GeneratedTeamsViewBodyState extends State<GeneratedTeamsViewBody> {
         ),
         const SafeArea(
           top: false,
-          minimum: EdgeInsets.only(top: 30, bottom: 20),
+          minimum: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: GeneratedTeamsBottomBar(),
         ),
       ],
