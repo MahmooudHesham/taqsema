@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
 
@@ -17,7 +19,7 @@ class PlayerPicture extends StatelessWidget {
     return CircleAvatar(
       backgroundColor: Colors.white.withAlpha(100),
       radius: radius,
-      backgroundImage: image != null ? AssetImage(image!) : null,
+      backgroundImage: _getImageProvider(image),
       child: image == null
           ? Text(
               name.isNotEmpty ? name[0].toUpperCase() : '?',
@@ -25,5 +27,15 @@ class PlayerPicture extends StatelessWidget {
             )
           : null,
     );
+  }
+
+  ImageProvider? _getImageProvider(String? imagePath) {
+    if (imagePath == null || imagePath.isEmpty) return null;
+
+    if (imagePath.startsWith('assets/')) {
+      return AssetImage(imagePath);
+    } else {
+      return FileImage(File(imagePath));
+    }
   }
 }
