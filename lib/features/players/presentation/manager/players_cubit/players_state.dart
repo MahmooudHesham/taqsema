@@ -29,3 +29,5 @@ final class PlayersFailure extends PlayersState {
   @override
   List<Object?> get props => [errMsg];
 }
+
+final class PlayersEmpty extends PlayersState {}

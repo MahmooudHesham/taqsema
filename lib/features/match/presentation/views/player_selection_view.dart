@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
+import 'package:t2sema/core/widgets/custom_empty_state.dart';
 import 'package:t2sema/core/widgets/custom_snack_bar.dart';
 import 'package:t2sema/features/players/data/models/player_model.dart';
 import 'package:t2sema/features/players/presentation/manager/players_cubit/players_cubit.dart';
@@ -22,10 +23,17 @@ class PlayerSelectionView extends StatelessWidget {
           if (state is PlayersFailure) {
             return Center(child: Text(state.errMsg));
           }
+          if (state is PlayersEmpty) {
+            return _buildEmptyState(context);
+          }
           return const Center(child: CircularProgressIndicator());
         }
         final players = state.players;
         final selectedIds = state.selectedId;
+
+        if (state is PlayersEmpty) {
+          return _buildEmptyState(context);
+        }
 
         final sortedPlayers = List<PlayerModel>.from(players);
         sortedPlayers.sort((a, b) {
@@ -59,6 +67,17 @@ class PlayerSelectionView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildEmptyState(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(bottom: 80, left: 20, right: 20),
+      child: CustomEmptyState(
+        title: 'Add Your Squad',
+        subtitle: "Add players to start the match.",
+        icon: Icons.groups_2_rounded,
+      ),
     );
   }
 }

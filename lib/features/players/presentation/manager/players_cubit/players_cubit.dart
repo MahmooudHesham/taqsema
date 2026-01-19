@@ -18,6 +18,12 @@ class PlayersCubit extends Cubit<PlayersState> {
     }
     try {
       List<PlayerModel> players = await playersRepo.getAllPlayers();
+
+      if (players.isEmpty) {
+        emit(PlayersEmpty());
+        return;
+      }
+
       final allPlayersId = players.map((e) => e.id).toSet();
       _currentSelection.removeWhere((id) => !allPlayersId.contains(id));
       emit(PlayersSuccess(players: players, selectedId: _currentSelection));

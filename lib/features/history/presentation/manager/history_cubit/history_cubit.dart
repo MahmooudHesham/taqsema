@@ -11,10 +11,8 @@ class HistoryCubit extends Cubit<HistoryState> {
 
   void getAllMatches() {
     emit(HistoryLoading());
-    print("🕵️‍♂️ CUBIT: Fetching history...");
     try {
       final matches = matchRepo.getAllMatches();
-      print("📦 CUBIT: Found ${matches.length} matches in Hive");
       if (matches.isEmpty) {
         emit(HistoryEmpty());
       } else {
@@ -36,13 +34,10 @@ class HistoryCubit extends Cubit<HistoryState> {
   }
 
   Future<void> saveMatch(MatchModel match) async {
-    print("🕵️‍♂️ CUBIT: Attempting to save match...");
     try {
       await matchRepo.addMatch(match);
-      print("✅ CUBIT: Match saved to Hive!");
       getAllMatches();
     } catch (e) {
-      print("❌ CUBIT: Save failed: $e");
       emit(HistoryFailure(errMsg: 'Failed to save match: $e'));
     }
   }
