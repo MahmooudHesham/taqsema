@@ -9,15 +9,19 @@ void showCustomSnackBar(
 }) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      content: Text(message, style: AppStyles.textStyleRegular16),
+      content: Text(
+        message,
+        textAlign: TextAlign.center,
+        style: AppStyles.textStyleRegular16,
+      ),
       backgroundColor: isError
           ? AppColors.error
           : const Color.fromARGB(255, 2, 151, 112),
       behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadiusGeometry.circular(12),
+        borderRadius: BorderRadiusGeometry.circular(22),
       ),
-      margin: const EdgeInsets.all(20),
       duration: const Duration(seconds: 3),
     ),
   );
