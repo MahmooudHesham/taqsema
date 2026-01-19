@@ -1,42 +1,109 @@
 import 'package:flutter/material.dart';
 import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
+import 'package:t2sema/features/players/data/models/player_model.dart';
 
-class MatchHistoryCard extends StatelessWidget {
+class MatchHistoryCard extends StatefulWidget {
   const MatchHistoryCard({
     super.key,
     required this.date,
     required this.firstScore,
     required this.secondScore,
+    required this.teamA,
+    required this.teamB,
   });
+
   final String date;
   final int firstScore, secondScore;
+  final List<PlayerModel> teamA;
+  final List<PlayerModel> teamB;
+
+  @override
+  State<MatchHistoryCard> createState() => _MatchHistoryCardState();
+}
+
+class _MatchHistoryCardState extends State<MatchHistoryCard> {
+  bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.matchHistoryContainer,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isExpanded = !isExpanded;
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.matchHistoryContainer,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
           children: [
-            Expanded(
-              child: Text(
-                date,
-                style: AppStyles.textStyleLight20,
-                overflow: TextOverflow.ellipsis,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      widget.date,
+                      style: AppStyles.textStyleLight20,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Text(
+                    '${widget.firstScore} - ${widget.secondScore}',
+                    style: AppStyles.textStyleSemiBold20,
+                  ),
+                ],
               ),
             ),
-            Text(
-              '$firstScore - $secondScore',
-              style: AppStyles.textStyleSemiBold20,
+            AnimatedCrossFade(
+              firstChild: const SizedBox(width: double.infinity),
+              secondChild: _buildTeams(),
+              crossFadeState: isExpanded
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              duration: const Duration(milliseconds: 300),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildTeams() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Left column (Team A)
+          Expanded(
+            child: _buildPlayerColumn(title: 'Team A', players: widget.teamA),
+          ),
+
+          // Right column (Team B)
+          Expanded(
+            child: _buildPlayerColumn(title: "Team B", players: widget.teamB),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Column _buildPlayerColumn({
+    required String title,
+    required List<PlayerModel> players,
+  }) {
+    return Column(
+      children: [
+        Text(title, style: AppStyles.textStyleRegular18),
+        const SizedBox(height: 10),
+        ...players.map(
+          (player) => Text(player.name, style: AppStyles.textStyleLight18),
+        ),
+      ],
     );
   }
 }
