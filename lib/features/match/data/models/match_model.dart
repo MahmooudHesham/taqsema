@@ -1,13 +1,25 @@
+import 'package:hive/hive.dart';
 import 'package:t2sema/features/players/data/models/player_model.dart';
+part 'match_model.g.dart';
 
-class MatchModel {
-  final String date;
+@HiveType(typeId: 1)
+class MatchModel extends HiveObject {
+  @HiveField(0)
+  final DateTime date;
+
+  @HiveField(1)
   final int firstScore;
+
+  @HiveField(2)
   final int secondScore;
+
+  @HiveField(3)
   final List<PlayerModel> teamA;
+
+  @HiveField(4)
   final List<PlayerModel> teamB;
 
-  const MatchModel({
+  MatchModel({
     required this.date,
     required this.firstScore,
     required this.secondScore,
