@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
 import 'package:t2sema/features/match/presentation/views/widgets/compact_players_list.dart';
+import 'package:t2sema/features/players/data/models/player_model.dart';
 
 class TeamColumn extends StatelessWidget {
   const TeamColumn({
@@ -11,7 +12,7 @@ class TeamColumn extends StatelessWidget {
   });
 
   final String title;
-  final List<String> players;
+  final List<PlayerModel> players;
   final bool isTeamA;
 
   @override
@@ -22,7 +23,7 @@ class TeamColumn extends StatelessWidget {
         Text(title, style: AppStyles.textStyleBold32),
         const SizedBox(height: 10),
         Flexible(
-          child: CompactPlayersList(names: players, isTeamA: isTeamA),
+          child: CompactPlayersList(players: players, isTeamA: isTeamA),
         ),
       ],
     );

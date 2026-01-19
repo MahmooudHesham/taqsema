@@ -4,8 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:t2sema/core/utils/service_locator.dart';
 import 'package:t2sema/features/history/presentation/views/history_view.dart';
 import 'package:t2sema/features/home/presentation/views/home_view.dart';
+import 'package:t2sema/features/match/presentation/manager/match_cubit/match_cubit.dart';
 import 'package:t2sema/features/match/presentation/views/generated_teams_view.dart';
 import 'package:t2sema/features/match/presentation/views/player_selection_view.dart';
+import 'package:t2sema/features/players/data/models/player_model.dart';
 import 'package:t2sema/features/players/data/repos/players_repo.dart';
 import 'package:t2sema/features/players/presentation/manager/players_cubit/players_cubit.dart';
 
@@ -51,10 +53,11 @@ abstract class AppRouter {
       GoRoute(
         path: kGeneratedTeamsView,
         builder: (context, state) {
-          final data = state.extra as Map<String, List<String>>;
-          return GeneratedTeamsView(
-            teamA: data['teamA']!,
-            teamB: data['teamB']!,
+          final data = state.extra as Map<String, dynamic>;
+          final players = data['players'] as List<PlayerModel>;
+          return BlocProvider(
+            create: (context) => MatchCubit()..generateTeams(players),
+            child: const GeneratedTeamsView(),
           );
         },
       ),

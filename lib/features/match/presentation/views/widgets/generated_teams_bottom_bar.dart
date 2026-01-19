@@ -6,7 +6,9 @@ import 'package:t2sema/core/widgets/glass_dialog.dart';
 import 'package:t2sema/features/home/presentation/views/widgets/match_result_dialog.dart';
 
 class GeneratedTeamsBottomBar extends StatelessWidget {
-  const GeneratedTeamsBottomBar({super.key});
+  const GeneratedTeamsBottomBar({super.key, required this.onRegenerate});
+
+  final VoidCallback onRegenerate;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class GeneratedTeamsBottomBar extends StatelessWidget {
           child: _ActionBtn(
             label: "Regenerate",
             color: AppColors.secondary,
-            onTap: () {},
+            onTap: onRegenerate,
           ),
         ),
         const SizedBox(width: 15),

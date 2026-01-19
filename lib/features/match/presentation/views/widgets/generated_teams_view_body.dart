@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:t2sema/core/utils/app_colors.dart';
+import 'package:t2sema/features/match/presentation/manager/match_cubit/match_cubit.dart';
 import 'package:t2sema/features/match/presentation/views/widgets/generated_teams_bottom_bar.dart';
 import 'package:t2sema/features/match/presentation/views/widgets/team_column.dart';
+import 'package:t2sema/features/players/data/models/player_model.dart';
 
 class GeneratedTeamsViewBody extends StatefulWidget {
   const GeneratedTeamsViewBody({
@@ -9,22 +12,44 @@ class GeneratedTeamsViewBody extends StatefulWidget {
     required this.teamA,
     required this.teamB,
   });
-  final List<String> teamA;
-  final List<String> teamB;
+  final List<PlayerModel> teamA;
+  final List<PlayerModel> teamB;
 
   @override
   State<GeneratedTeamsViewBody> createState() => _GeneratedTeamsViewBodyState();
 }
 
 class _GeneratedTeamsViewBodyState extends State<GeneratedTeamsViewBody> {
-  void _movePlayer(String player, {required bool toTeamA}) {
+  late List<PlayerModel> copyOfTeamA;
+  late List<PlayerModel> copyOfTeamB;
+
+  @override
+  void initState() {
+    super.initState();
+
+    copyOfTeamA = List.from(widget.teamA);
+    copyOfTeamB = List.from(widget.teamB);
+  }
+
+  @override
+  void didUpdateWidget(covariant GeneratedTeamsViewBody oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.teamA != oldWidget.teamA || widget.teamB != oldWidget.teamB) {
+      setState(() {
+        copyOfTeamA = List.from(widget.teamA);
+        copyOfTeamB = List.from(widget.teamB);
+      });
+    }
+  }
+
+  void _movePlayer(PlayerModel player, {required bool toTeamA}) {
     setState(() {
       if (toTeamA) {
-        widget.teamB.remove(player);
-        widget.teamA.add(player);
+        copyOfTeamB.remove(player);
+        copyOfTeamA.add(player);
       } else {
-        widget.teamA.remove(player);
-        widget.teamB.add(player);
+        copyOfTeamA.remove(player);
+        copyOfTeamB.add(player);
       }
     });
   }
@@ -42,7 +67,7 @@ class _GeneratedTeamsViewBodyState extends State<GeneratedTeamsViewBody> {
               Expanded(
                 child: _TeamDropZone(
                   title: 'Team A',
-                  players: widget.teamA,
+                  players: copyOfTeamA,
                   isTeamA: true,
                   onPlayerDropped: (player) =>
                       _movePlayer(player, toTeamA: true),
@@ -53,7 +78,7 @@ class _GeneratedTeamsViewBodyState extends State<GeneratedTeamsViewBody> {
               Expanded(
                 child: _TeamDropZone(
                   title: 'Team B',
-                  players: widget.teamB,
+                  players: copyOfTeamB,
                   isTeamA: false,
                   onPlayerDropped: (player) =>
                       _movePlayer(player, toTeamA: false),
@@ -62,10 +87,16 @@ class _GeneratedTeamsViewBodyState extends State<GeneratedTeamsViewBody> {
             ],
           ),
         ),
-        const SafeArea(
+        SafeArea(
           top: false,
-          minimum: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: GeneratedTeamsBottomBar(),
+          minimum: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: GeneratedTeamsBottomBar(
+            onRegenerate: () {
+              final allPlayers = [...widget.teamA, ...widget.teamB];
+
+              context.read<MatchCubit>().generateTeams(allPlayers);
+            },
+          ),
         ),
       ],
     );
@@ -81,13 +112,13 @@ class _TeamDropZone extends StatelessWidget {
   });
 
   final String title;
-  final List<String> players;
+  final List<PlayerModel> players;
   final bool isTeamA;
-  final Function(String) onPlayerDropped;
+  final Function(PlayerModel) onPlayerDropped;
 
   @override
   Widget build(BuildContext context) {
-    return DragTarget<String>(
+    return DragTarget<PlayerModel>(
       onWillAcceptWithDetails: (details) => !players.contains(details.data),
       onAcceptWithDetails: (details) => onPlayerDropped(details.data),
 

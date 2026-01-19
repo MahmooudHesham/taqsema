@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
+import 'package:t2sema/features/players/data/models/player_model.dart';
 import 'package:t2sema/features/players/presentation/views/widgets/player_picture.dart';
 
 class CompactPlayerCard extends StatelessWidget {
   const CompactPlayerCard({
     super.key,
-    required this.name,
-    this.image,
+    required this.player,
     required this.teamA,
   });
-  final String name;
-  final String? image;
+  final PlayerModel player;
   final bool teamA;
   @override
   Widget build(BuildContext context) {
-    return LongPressDraggable<String>(
-      data: name,
+    return LongPressDraggable<PlayerModel>(
+      data: player,
       delay: const Duration(milliseconds: 100),
       feedback: Material(
         color: Colors.transparent,
@@ -24,30 +23,24 @@ class CompactPlayerCard extends StatelessWidget {
           opacity: 0.9,
           child: SizedBox(
             width: 180,
-            child: _CardContent(teamA: teamA, image: image, name: name),
+            child: _CardContent(teamA: teamA, player: player),
           ),
         ),
       ),
       childWhenDragging: Opacity(
         opacity: 0.3,
-        child: _CardContent(teamA: teamA, image: image, name: name),
+        child: _CardContent(teamA: teamA, player: player),
       ),
-      child: _CardContent(teamA: teamA, image: image, name: name),
+      child: _CardContent(teamA: teamA, player: player),
     );
   }
 }
 
 class _CardContent extends StatelessWidget {
-  const _CardContent({
-    required this.teamA,
-    required this.image,
-    required this.name,
-  });
+  const _CardContent({required this.teamA, required this.player});
 
   final bool teamA;
-  final String? image;
-  final String name;
-
+  final PlayerModel player;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,11 +53,11 @@ class _CardContent extends StatelessWidget {
         children: [
           const Icon(Icons.drag_indicator),
           const SizedBox(width: 2),
-          PlayerPicture(image: image, name: name, radius: 17),
+          PlayerPicture(image: player.imagePath, name: player.name, radius: 17),
           const SizedBox(width: 5),
           Expanded(
             child: Text(
-              name,
+              player.name,
               style: AppStyles.textStyleRegular14,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
