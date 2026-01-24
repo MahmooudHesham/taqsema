@@ -88,6 +88,11 @@ abstract class AppStyles {
   // =========================
   // Bold (w700)
   // =========================
+  static final TextStyle textStyleBold14 = _baseStyle.copyWith(
+    fontSize: 14,
+    fontWeight: FontWeight.bold, // w700
+  );
+
   static final TextStyle textStyleBold32 = _baseStyle.copyWith(
     fontSize: 32,
     fontWeight: FontWeight.bold, // w700

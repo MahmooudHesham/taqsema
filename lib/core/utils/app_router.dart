@@ -11,6 +11,7 @@ import 'package:t2sema/features/match/presentation/views/player_selection_view.d
 import 'package:t2sema/features/players/data/models/player_model.dart';
 import 'package:t2sema/features/players/data/repos/players_repo.dart';
 import 'package:t2sema/features/players/presentation/manager/players_cubit/players_cubit.dart';
+import 'package:t2sema/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
   static const kHome = '/home';
@@ -21,8 +22,9 @@ abstract class AppRouter {
 
   static final router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: kHome,
+    initialLocation: '/',
     routes: [
+      GoRoute(path: '/', builder: (context, state) => const SplashView()),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) => BlocProvider(
           create: (context) =>

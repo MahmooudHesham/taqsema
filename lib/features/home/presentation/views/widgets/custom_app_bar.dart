@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:t2sema/core/utils/app_styles.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:t2sema/core/utils/constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -8,7 +9,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      title: Text("تقسيمة", style: AppStyles.textStyleBold40),
+      backgroundColor: Colors.transparent,
+      scrolledUnderElevation: 0,
+      title: SvgPicture.asset(kAppFullLogoSvg),
     );
   }
 
