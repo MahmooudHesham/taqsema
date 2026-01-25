@@ -27,7 +27,7 @@ class HomeButtonOverlay extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: SafeArea(
-        minimum: const EdgeInsets.only(bottom: 20),
+        minimum: const EdgeInsets.only(bottom: 40),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

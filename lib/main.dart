@@ -12,7 +12,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent),
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarContrastEnforced: false,
+    ),
   );
   await Hive.initFlutter();
   Hive.registerAdapter(PlayerModelAdapter());
