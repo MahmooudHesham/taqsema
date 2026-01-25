@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_haptics.dart';
 import 'package:taqsema/core/utils/app_styles.dart';
 import 'package:taqsema/core/widgets/custom_button.dart';
 import 'package:taqsema/core/widgets/glass_dialog.dart';
@@ -25,7 +26,10 @@ class GeneratedTeamsBottomBar extends StatelessWidget {
           child: _ActionBtn(
             label: "Regenerate",
             color: AppColors.secondary,
-            onTap: onRegenerate,
+            onTap: () {
+              AppHaptics.buttonPress();
+              onRegenerate();
+            },
           ),
         ),
         const SizedBox(width: 15),
@@ -34,6 +38,7 @@ class GeneratedTeamsBottomBar extends StatelessWidget {
             label: "Finish Match",
             color: AppColors.primary.withAlpha(200),
             onTap: () {
+              AppHaptics.buttonPress();
               showAppDialog(
                 context: context,
                 padding: const EdgeInsets.symmetric(

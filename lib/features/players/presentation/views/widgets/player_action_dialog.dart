@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_haptics.dart';
 import 'package:taqsema/core/utils/app_styles.dart';
 import 'package:taqsema/core/widgets/custom_button.dart';
 import 'package:taqsema/core/widgets/custom_snack_bar.dart';
@@ -69,6 +70,7 @@ class _PlayerActionDialogState extends State<PlayerActionDialog> {
               child: CustomButton(
                 label: isEditing ? "Confirm" : 'Add',
                 onTap: () {
+                  AppHaptics.buttonPress();
                   _onSave(context);
                 },
               ),

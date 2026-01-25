@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
 import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_haptics.dart';
 import 'package:taqsema/core/utils/app_router.dart';
 import 'package:taqsema/core/utils/app_styles.dart';
 import 'package:taqsema/core/utils/constants.dart';
@@ -94,6 +95,7 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
           child: CustomButton(
             label: 'Confirm',
             onTap: () async {
+              AppHaptics.buttonPress();
               MatchModel newMatch = MatchModel(
                 date: DateTime.now(),
                 firstScore: teamAScore,

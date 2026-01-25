@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taqsema/core/utils/app_haptics.dart';
 import 'package:taqsema/core/widgets/glass_container.dart';
 
 class GlassCircleButton extends StatelessWidget {
@@ -24,7 +25,12 @@ class GlassCircleButton extends StatelessWidget {
       //padding: EdgeInsets.zero,
       borderRadius: size / 2,
       child: IconButton(
-        onPressed: onTap,
+        onPressed: onTap != null
+            ? () {
+                AppHaptics.buttonPress();
+                onTap!();
+              }
+            : null,
         icon: SvgPicture.asset(iconPath, fit: BoxFit.contain, width: iconSize),
       ),
     );

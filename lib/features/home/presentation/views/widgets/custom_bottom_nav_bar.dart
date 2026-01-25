@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_haptics.dart';
 import 'package:taqsema/core/widgets/glass_container.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -29,7 +30,10 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget _buildNavItem(int index, String assetPath) {
     final bool isSelected = currentIndex == index;
     return IconButton(
-      onPressed: () => onTap(index),
+      onPressed: () {
+        AppHaptics.selection();
+        onTap(index);
+      },
       icon: SvgPicture.asset(
         assetPath,
         colorFilter: ColorFilter.mode(
