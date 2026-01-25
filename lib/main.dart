@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_router.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -9,6 +10,10 @@ import 'package:t2sema/features/players/data/models/player_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent),
+  );
   await Hive.initFlutter();
   Hive.registerAdapter(PlayerModelAdapter());
   Hive.registerAdapter(MatchModelAdapter());
@@ -16,11 +21,11 @@ void main() async {
   await Hive.openBox<MatchModel>(kMatchesBox);
   setupServiceLocator();
 
-  runApp(const T2semaApp());
+  runApp(const TaqsemaApp());
 }
 
-class T2semaApp extends StatelessWidget {
-  const T2semaApp({super.key});
+class TaqsemaApp extends StatelessWidget {
+  const TaqsemaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
