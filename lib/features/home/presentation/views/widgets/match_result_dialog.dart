@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_router.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
+import 'package:t2sema/core/utils/constants.dart';
 import 'package:t2sema/core/utils/service_locator.dart';
 import 'package:t2sema/core/widgets/custom_button.dart';
 import 'package:t2sema/features/history/presentation/manager/history_cubit/history_cubit.dart';
@@ -91,7 +93,7 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: CustomButton(
             label: 'Confirm',
-            onTap: () {
+            onTap: () async {
               MatchModel newMatch = MatchModel(
                 date: DateTime.now(),
                 firstScore: teamAScore,
@@ -100,7 +102,13 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
                 teamB: widget.teamB,
               );
               getIt<HistoryCubit>().saveMatch(newMatch);
-              context.go(AppRouter.kHistory);
+              
+              // Clear active match
+              await Hive.box(kActiveMatchBox).clear();
+
+              if (context.mounted) {
+                context.go(AppRouter.kHistory);
+              }
             },
           ),
         ),

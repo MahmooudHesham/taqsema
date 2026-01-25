@@ -59,12 +59,19 @@ abstract class AppRouter {
       GoRoute(
         path: kGeneratedTeamsView,
         builder: (context, state) {
-          final data = state.extra as Map<String, dynamic>;
-          final players = data['players'] as List<PlayerModel>;
-          return BlocProvider(
-            create: (context) => MatchCubit()..generateTeams(players),
-            child: const GeneratedTeamsView(),
-          );
+          if (state.extra != null) {
+            final data = state.extra as Map<String, dynamic>;
+            final players = data['players'] as List<PlayerModel>;
+            return BlocProvider(
+              create: (context) => MatchCubit()..generateTeams(players),
+              child: const GeneratedTeamsView(),
+            );
+          } else {
+            return BlocProvider(
+              create: (context) => MatchCubit()..loadActiveMatch(),
+              child: const GeneratedTeamsView(),
+            );
+          }
         },
       ),
     ],

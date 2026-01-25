@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 import 'package:t2sema/core/utils/app_colors.dart';
 import 'package:t2sema/core/utils/app_router.dart';
 import 'package:t2sema/core/utils/app_styles.dart';
@@ -40,7 +41,12 @@ class _SplashViewState extends State<SplashView>
   Future<void> _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3));
 
-    if (mounted) {
+    if (!mounted) return;
+
+    final box = Hive.box(kActiveMatchBox);
+    if (box.isNotEmpty) {
+      context.go(AppRouter.kGeneratedTeamsView);
+    } else {
       context.go(AppRouter.kHome);
     }
   }
