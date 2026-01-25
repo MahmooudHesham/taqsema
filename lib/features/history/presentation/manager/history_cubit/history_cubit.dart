@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:t2sema/features/match/data/models/match_model.dart';
-import 'package:t2sema/features/match/data/repos/match_repo.dart';
+import 'package:taqsema/features/match/data/models/match_model.dart';
+import 'package:taqsema/features/match/data/repos/match_repo.dart';
 
 part 'history_state.dart';
 

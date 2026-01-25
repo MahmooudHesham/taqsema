@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:t2sema/core/utils/app_styles.dart';
-import 'package:t2sema/features/players/presentation/views/widgets/player_picture.dart';
+import 'package:taqsema/core/utils/app_styles.dart';
+import 'package:taqsema/features/players/presentation/views/widgets/player_picture.dart';
 
 class PlayerInfo extends StatelessWidget {
   const PlayerInfo({

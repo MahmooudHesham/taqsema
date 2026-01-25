@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:t2sema/core/utils/app_styles.dart';
-import 'package:t2sema/core/utils/service_locator.dart';
-import 'package:t2sema/core/widgets/custom_empty_state.dart';
-import 'package:t2sema/features/history/presentation/manager/history_cubit/history_cubit.dart';
-import 'package:t2sema/features/history/presentation/views/widgets/match_history_list_view.dart';
+import 'package:taqsema/core/utils/app_styles.dart';
+import 'package:taqsema/core/utils/service_locator.dart';
+import 'package:taqsema/core/widgets/custom_empty_state.dart';
+import 'package:taqsema/features/history/presentation/manager/history_cubit/history_cubit.dart';
+import 'package:taqsema/features/history/presentation/views/widgets/match_history_list_view.dart';
 
 class HistoryView extends StatelessWidget {
   const HistoryView({super.key});

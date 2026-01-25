@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
-import 'package:t2sema/core/utils/app_colors.dart';
-import 'package:t2sema/core/utils/app_router.dart';
-import 'package:t2sema/core/utils/app_styles.dart';
-import 'package:t2sema/core/utils/constants.dart';
-import 'package:t2sema/core/utils/service_locator.dart';
-import 'package:t2sema/core/widgets/custom_button.dart';
-import 'package:t2sema/features/history/presentation/manager/history_cubit/history_cubit.dart';
-import 'package:t2sema/features/match/data/models/match_model.dart';
-import 'package:t2sema/features/match/presentation/views/widgets/match_result_widgets.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
+import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_router.dart';
+import 'package:taqsema/core/utils/app_styles.dart';
+import 'package:taqsema/core/utils/constants.dart';
+import 'package:taqsema/core/utils/service_locator.dart';
+import 'package:taqsema/core/widgets/custom_button.dart';
+import 'package:taqsema/features/history/presentation/manager/history_cubit/history_cubit.dart';
+import 'package:taqsema/features/match/data/models/match_model.dart';
+import 'package:taqsema/features/match/presentation/views/widgets/match_result_widgets.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
 
 class MatchResultDialog extends StatefulWidget {
   const MatchResultDialog({

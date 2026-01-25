@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "t2sema" "\0"
+            VALUE "FileDescription", "Taqsema" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "t2sema" "\0"
+            VALUE "InternalName", "Taqsema" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "t2sema.exe" "\0"
-            VALUE "ProductName", "t2sema" "\0"
+            VALUE "ProductName", "Taqsema" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

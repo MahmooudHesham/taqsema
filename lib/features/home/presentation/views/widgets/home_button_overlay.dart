@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:t2sema/features/home/presentation/views/widgets/add_player_button.dart';
-import 'package:t2sema/features/home/presentation/views/widgets/custom_bottom_nav_bar.dart';
-import 'package:t2sema/features/match/presentation/views/widgets/generate_team_button.dart';
+import 'package:taqsema/features/home/presentation/views/widgets/add_player_button.dart';
+import 'package:taqsema/features/home/presentation/views/widgets/custom_bottom_nav_bar.dart';
+import 'package:taqsema/features/match/presentation/views/widgets/generate_team_button.dart';
 
 class HomeButtonOverlay extends StatelessWidget {
   const HomeButtonOverlay({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t2sema/core/widgets/glass_circle_button.dart';
+import 'package:taqsema/core/widgets/glass_circle_button.dart';
 
 class GenerateTeamButton extends StatelessWidget {
   const GenerateTeamButton({

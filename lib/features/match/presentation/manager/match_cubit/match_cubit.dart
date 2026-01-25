@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
-import 'package:t2sema/core/utils/constants.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
+import 'package:taqsema/core/utils/constants.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
 
 part 'match_state.dart';
 

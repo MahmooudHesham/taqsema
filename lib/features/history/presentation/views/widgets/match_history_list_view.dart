@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:t2sema/core/widgets/confirm_delete_dialog.dart';
-import 'package:t2sema/core/widgets/custom_dismiss_background.dart';
-import 'package:t2sema/core/widgets/custom_snack_bar.dart';
-import 'package:t2sema/features/history/presentation/manager/history_cubit/history_cubit.dart';
-import 'package:t2sema/features/history/presentation/views/widgets/match_history_card.dart';
-import 'package:t2sema/features/match/data/models/match_model.dart';
+import 'package:taqsema/core/widgets/confirm_delete_dialog.dart';
+import 'package:taqsema/core/widgets/custom_dismiss_background.dart';
+import 'package:taqsema/core/widgets/custom_snack_bar.dart';
+import 'package:taqsema/features/history/presentation/manager/history_cubit/history_cubit.dart';
+import 'package:taqsema/features/history/presentation/views/widgets/match_history_card.dart';
+import 'package:taqsema/features/match/data/models/match_model.dart';
 
 class MatchHistoryListView extends StatelessWidget {
   const MatchHistoryListView({super.key, required this.matches});

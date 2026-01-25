@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:t2sema/core/utils/app_colors.dart';
-import 'package:t2sema/core/utils/app_router.dart';
+import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_router.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:t2sema/core/utils/constants.dart';
-import 'package:t2sema/core/utils/service_locator.dart';
-import 'package:t2sema/features/match/data/models/match_model.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
+import 'package:taqsema/core/utils/constants.dart';
+import 'package:taqsema/core/utils/service_locator.dart';
+import 'package:taqsema/features/match/data/models/match_model.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

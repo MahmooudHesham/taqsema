@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:t2sema/core/utils/app_router.dart';
-import 'package:t2sema/core/widgets/custom_snack_bar.dart';
-import 'package:t2sema/features/home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:t2sema/features/match/presentation/manager/match_cubit/match_cubit.dart';
-import 'package:t2sema/features/match/presentation/views/widgets/generated_teams_view_body.dart';
+import 'package:taqsema/core/utils/app_router.dart';
+import 'package:taqsema/core/widgets/custom_snack_bar.dart';
+import 'package:taqsema/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:taqsema/features/match/presentation/manager/match_cubit/match_cubit.dart';
+import 'package:taqsema/features/match/presentation/views/widgets/generated_teams_view_body.dart';
 
 class GeneratedTeamsView extends StatelessWidget {
   const GeneratedTeamsView({super.key});

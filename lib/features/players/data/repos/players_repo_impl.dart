@@ -1,7 +1,7 @@
 import 'package:hive_flutter/adapters.dart';
-import 'package:t2sema/core/utils/constants.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
-import 'package:t2sema/features/players/data/repos/players_repo.dart';
+import 'package:taqsema/core/utils/constants.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
+import 'package:taqsema/features/players/data/repos/players_repo.dart';
 
 class PlayersRepoImpl extends PlayersRepo {
   @override

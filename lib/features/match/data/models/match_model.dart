@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
 part 'match_model.g.dart';
 
 @HiveType(typeId: 1)

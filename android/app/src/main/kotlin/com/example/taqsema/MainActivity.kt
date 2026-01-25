@@ -1,4 +1,4 @@
-package com.example.t2sema
+package com.example.taqsema
 
 import io.flutter.embedding.android.FlutterActivity
 

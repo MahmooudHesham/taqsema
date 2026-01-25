@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:t2sema/core/utils/app_colors.dart';
-import 'package:t2sema/core/utils/app_styles.dart';
-import 'package:t2sema/core/widgets/custom_button.dart';
-import 'package:t2sema/core/widgets/glass_dialog.dart';
-import 'package:t2sema/features/home/presentation/views/widgets/match_result_dialog.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
+import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_styles.dart';
+import 'package:taqsema/core/widgets/custom_button.dart';
+import 'package:taqsema/core/widgets/glass_dialog.dart';
+import 'package:taqsema/features/home/presentation/views/widgets/match_result_dialog.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
 
 class GeneratedTeamsBottomBar extends StatelessWidget {
   const GeneratedTeamsBottomBar({

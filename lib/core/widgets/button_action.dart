@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:t2sema/core/utils/app_styles.dart';
+import 'package:taqsema/core/utils/app_styles.dart';
 
 class ButtonAction extends StatelessWidget {
   const ButtonAction({super.key, required this.title, required this.iconPath});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t2sema/core/widgets/glass_container.dart';
+import 'package:taqsema/core/widgets/glass_container.dart';
 
 class GlassDialog extends StatelessWidget {
   const GlassDialog({super.key, required this.child, this.padding});

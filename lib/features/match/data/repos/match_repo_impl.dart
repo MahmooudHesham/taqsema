@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
-import 'package:t2sema/core/utils/constants.dart';
-import 'package:t2sema/features/match/data/models/match_model.dart';
-import 'package:t2sema/features/match/data/repos/match_repo.dart';
+import 'package:taqsema/core/utils/constants.dart';
+import 'package:taqsema/features/match/data/models/match_model.dart';
+import 'package:taqsema/features/match/data/repos/match_repo.dart';
 
 class MatchRepoImpl extends MatchRepo {
   @override

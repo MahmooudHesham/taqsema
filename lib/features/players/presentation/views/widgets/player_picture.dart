@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:t2sema/core/utils/app_styles.dart';
+import 'package:taqsema/core/utils/app_styles.dart';
 
 class PlayerPicture extends StatelessWidget {
   const PlayerPicture({

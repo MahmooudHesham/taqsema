@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
-import 'package:t2sema/features/players/data/repos/players_repo.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
+import 'package:taqsema/features/players/data/repos/players_repo.dart';
 import 'package:uuid/uuid.dart';
 
 part 'players_state.dart';

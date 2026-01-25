@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t2sema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_colors.dart';
 
 abstract class AppStyles {
   // 1. Define the Family Name (Must match the family name in pubspec.yaml)

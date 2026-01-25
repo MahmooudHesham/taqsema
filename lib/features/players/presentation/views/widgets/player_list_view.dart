@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:t2sema/core/widgets/confirm_delete_dialog.dart';
-import 'package:t2sema/core/widgets/custom_dismiss_background.dart';
-import 'package:t2sema/core/widgets/custom_snack_bar.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
-import 'package:t2sema/features/players/presentation/manager/players_cubit/players_cubit.dart';
-import 'package:t2sema/features/players/presentation/views/widgets/player_card.dart';
+import 'package:taqsema/core/widgets/confirm_delete_dialog.dart';
+import 'package:taqsema/core/widgets/custom_dismiss_background.dart';
+import 'package:taqsema/core/widgets/custom_snack_bar.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
+import 'package:taqsema/features/players/presentation/manager/players_cubit/players_cubit.dart';
+import 'package:taqsema/features/players/presentation/views/widgets/player_card.dart';
 
 class PlayersListView extends StatelessWidget {
   const PlayersListView({

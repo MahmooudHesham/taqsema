@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:t2sema/core/utils/app_colors.dart';
-import 'package:t2sema/core/widgets/glass_container.dart';
+import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/widgets/glass_container.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({

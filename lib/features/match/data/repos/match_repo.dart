@@ -1,4 +1,4 @@
-import 'package:t2sema/features/match/data/models/match_model.dart';
+import 'package:taqsema/features/match/data/models/match_model.dart';
 
 abstract class MatchRepo {
   List<MatchModel> getAllMatches();

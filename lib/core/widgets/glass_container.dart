@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:t2sema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_colors.dart';
 
 class GlassContainer extends StatelessWidget {
   const GlassContainer({

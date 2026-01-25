@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:t2sema/core/utils/app_colors.dart';
-import 'package:t2sema/core/widgets/glass_dialog.dart';
-import 'package:t2sema/features/players/data/models/player_model.dart';
-import 'package:t2sema/features/players/presentation/manager/players_cubit/players_cubit.dart';
-import 'package:t2sema/features/players/presentation/views/widgets/player_action_dialog.dart';
-import 'package:t2sema/features/players/presentation/views/widgets/player_info.dart';
+import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/widgets/glass_dialog.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
+import 'package:taqsema/features/players/presentation/manager/players_cubit/players_cubit.dart';
+import 'package:taqsema/features/players/presentation/views/widgets/player_action_dialog.dart';
+import 'package:taqsema/features/players/presentation/views/widgets/player_info.dart';
 
 class PlayerCard extends StatelessWidget {
   const PlayerCard({

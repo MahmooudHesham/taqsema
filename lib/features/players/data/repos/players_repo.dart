@@ -1,4 +1,4 @@
-import 'package:t2sema/features/players/data/models/player_model.dart';
+import 'package:taqsema/features/players/data/models/player_model.dart';
 
 abstract class PlayersRepo {
   Future<void> addPlayer({required PlayerModel player});
