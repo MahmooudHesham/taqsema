@@ -11,11 +11,11 @@ class GlassDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: Colors.transparent,
-      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 25),
       child: RepaintBoundary(
         child: GlassContainer(
           opacity: 180,
-          blurStrength: 2,
+          blurStrength: 1,
           width: double.infinity,
           borderRadius: 12,
           child: Padding(
