@@ -67,7 +67,7 @@ class _PlayerActionDialogState extends State<PlayerActionDialog> {
             const SizedBox(height: 30),
             Center(
               child: CustomButton(
-                label: isEditing ? "Edit" : 'Add',
+                label: isEditing ? "Confirm" : 'Add',
                 onTap: () {
                   _onSave(context);
                 },
