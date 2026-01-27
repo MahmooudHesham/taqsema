@@ -30,7 +30,7 @@ Future<bool?> showDeleteConfirmDialog({
               Navigator.of(context).pop(true);
             },
             child: Text(
-              "Delete",
+              'Delete',
               style: AppStyles.textStyleMedium14.copyWith(
                 color: AppColors.error,
               ),

@@ -5,6 +5,7 @@ import 'package:taqsema/core/utils/app_haptics.dart';
 import 'package:taqsema/core/widgets/confirm_delete_dialog.dart';
 import 'package:taqsema/core/widgets/custom_dismiss_background.dart';
 import 'package:taqsema/core/widgets/custom_snack_bar.dart';
+import 'package:taqsema/core/widgets/haptic_list_view.dart';
 import 'package:taqsema/features/history/presentation/manager/history_cubit/history_cubit.dart';
 import 'package:taqsema/features/history/presentation/views/widgets/match_history_card.dart';
 import 'package:taqsema/features/match/data/models/match_model.dart';
@@ -14,8 +15,7 @@ class MatchHistoryListView extends StatelessWidget {
   final List<MatchModel> matches;
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      physics: const ClampingScrollPhysics(),
+    return HapticListView(
       padding: const EdgeInsets.only(bottom: 120),
       itemCount: matches.length,
       separatorBuilder: (context, index) => const SizedBox(height: 20),
