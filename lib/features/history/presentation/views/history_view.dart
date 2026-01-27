@@ -22,8 +22,8 @@ class HistoryView extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      right: 50,
-                      left: 50,
+                      right: 30,
+                      left: 30,
                       bottom: 100,
                     ),
                     child: MatchHistoryListView(matches: state.matches),
