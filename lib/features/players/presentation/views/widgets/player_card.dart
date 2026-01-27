@@ -35,7 +35,7 @@ class PlayerCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.selected.withAlpha(150)
+              ? AppColors.selectedWithAlpha
               : AppColors.notSelected,
           borderRadius: BorderRadius.circular(16),
         ),

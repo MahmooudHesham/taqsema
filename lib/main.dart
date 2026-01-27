@@ -22,9 +22,13 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(PlayerModelAdapter());
   Hive.registerAdapter(MatchModelAdapter());
-  await Hive.openBox<PlayerModel>(kPlayersBox);
-  await Hive.openBox<MatchModel>(kMatchesBox);
-  await Hive.openBox(kActiveMatchBox);
+  
+  await Future.wait([
+    Hive.openBox<PlayerModel>(kPlayersBox),
+    Hive.openBox<MatchModel>(kMatchesBox),
+    Hive.openBox(kActiveMatchBox),
+  ]);
+  
   setupServiceLocator();
 
   runApp(const TaqsemaApp());

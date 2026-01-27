@@ -16,6 +16,7 @@ abstract class AppColors {
   // =================================================================
   //Main Colors
   static const Color selected = _emerlad;
+  static final Color selectedWithAlpha = _emerlad.withAlpha(150);
   static const Color notSelected = _brickEmber;
   static const Color teamA = _brightSky;
   static const Color teamB = _yaleBlue;
