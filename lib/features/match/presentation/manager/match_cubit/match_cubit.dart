@@ -38,7 +38,7 @@ class MatchCubit extends Cubit<MatchState> {
       // Done
       emit(MatchGenerated(teamA: teamA, teamB: teamB));
     } catch (e) {
-      emit(MatchFailure(errMsg: "Error generating teams: $e"));
+      emit(MatchFailure(errMsg: 'Error generating teams: $e'));
     }
   }
 
@@ -47,7 +47,7 @@ class MatchCubit extends Cubit<MatchState> {
     try {
       final box = Hive.box(kActiveMatchBox);
       if (box.isEmpty) {
-        emit(const MatchFailure(errMsg: "No active match found"));
+        emit(const MatchFailure(errMsg: 'No active match found'));
         return;
       }
 
@@ -59,10 +59,10 @@ class MatchCubit extends Cubit<MatchState> {
         final teamB = List<PlayerModel>.from(teamBRaw);
         emit(MatchGenerated(teamA: teamA, teamB: teamB));
       } else {
-        emit(const MatchFailure(errMsg: "Error loading match data"));
+        emit(const MatchFailure(errMsg: 'Error loading match data'));
       }
     } catch (e) {
-      emit(MatchFailure(errMsg: "Error loading match: $e"));
+      emit(MatchFailure(errMsg: 'Error loading match: $e'));
     }
   }
 

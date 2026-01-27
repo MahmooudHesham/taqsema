@@ -24,7 +24,7 @@ class GeneratedTeamsBottomBar extends StatelessWidget {
       children: [
         Expanded(
           child: _ActionBtn(
-            label: "Regenerate",
+            label: 'Regenerate',
             color: AppColors.secondary,
             onTap: () {
               AppHaptics.buttonPress();
@@ -35,7 +35,7 @@ class GeneratedTeamsBottomBar extends StatelessWidget {
         const SizedBox(width: 15),
         Expanded(
           child: _ActionBtn(
-            label: "Finish Match",
+            label: 'Finish Match',
             color: AppColors.primary.withAlpha(200),
             onTap: () {
               AppHaptics.buttonPress();

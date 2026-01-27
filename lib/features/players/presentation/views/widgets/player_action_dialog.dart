@@ -54,7 +54,7 @@ class _PlayerActionDialogState extends State<PlayerActionDialog> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              isEditing ? 'Edit Player' : "Add Player",
+              isEditing ? 'Edit Player' : 'Add Player',
               style: AppStyles.textStyleMedium24,
             ),
             const SizedBox(height: 25),
@@ -68,7 +68,7 @@ class _PlayerActionDialogState extends State<PlayerActionDialog> {
             const SizedBox(height: 30),
             Center(
               child: CustomButton(
-                label: isEditing ? "Confirm" : 'Add',
+                label: isEditing ? 'Confirm' : 'Add',
                 onTap: () {
                   AppHaptics.buttonPress();
                   _onSave(context);
@@ -100,8 +100,8 @@ class _PlayerActionDialogState extends State<PlayerActionDialog> {
       showCustomSnackBar(
         context,
         message: isEditing
-            ? "${nameController.text} updated successfully"
-            : "${nameController.text} joined the squad!",
+            ? '${nameController.text} updated successfully'
+            : '${nameController.text} joined the squad!',
       );
     } else {
       setState(() {
@@ -112,7 +112,7 @@ class _PlayerActionDialogState extends State<PlayerActionDialog> {
 
   String? _validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return "Name is required";
+      return 'Name is required';
     }
     return null;
   }

@@ -87,7 +87,7 @@ class _MatchHistoryCardState extends State<MatchHistoryCard> {
 
           // Right column (Team B)
           Expanded(
-            child: _buildPlayerColumn(title: "Team B", players: widget.teamB),
+            child: _buildPlayerColumn(title: 'Team B', players: widget.teamB),
           ),
         ],
       ),

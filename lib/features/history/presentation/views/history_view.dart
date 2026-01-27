@@ -35,9 +35,9 @@ class HistoryView extends StatelessWidget {
             return const Padding(
               padding: EdgeInsets.only(right: 20, left: 20, bottom: 80),
               child: CustomEmptyState(
-                title: "No Matches Yet",
+                title: 'No Matches Yet',
                 subtitle:
-                    "Start a game, track the score, and save your history here!",
+                    'Start a game, track the score, and save your history here!',
                 icon: Icons.sports_soccer,
               ),
             );

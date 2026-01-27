@@ -88,7 +88,7 @@ class PlayersCubit extends Cubit<PlayersState> {
       emit(PlayersLoading());
       await fetchAllPlayers();
     } catch (e) {
-      emit(PlayersFailure(errMsg: "Failed to update player: $e"));
+      emit(PlayersFailure(errMsg: 'Failed to update player: $e'));
     }
   }
 }

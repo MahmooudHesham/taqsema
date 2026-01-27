@@ -33,7 +33,7 @@ class PlayerImagePicker extends StatelessWidget {
         child: image == null
             ? Center(
                 child: Text(
-                  "Add\nPhoto",
+                  'Add\nPhoto',
                   textAlign: TextAlign.center,
                   style: AppStyles.textStyleRegular16,
                 ),

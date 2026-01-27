@@ -75,7 +75,7 @@ class PlayerSelectionView extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 80, left: 20, right: 20),
       child: CustomEmptyState(
         title: 'Add Your Squad',
-        subtitle: "Add players to start the match.",
+        subtitle: 'Add players to start the match.',
         icon: Icons.groups_2_rounded,
       ),
     );

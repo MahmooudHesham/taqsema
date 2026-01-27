@@ -36,7 +36,7 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
         Stack(
           alignment: Alignment.center,
           children: [
-            Text("Match result", style: AppStyles.textStyleMedium18),
+            Text('Match result', style: AppStyles.textStyleMedium18),
             Align(
               alignment: Alignment.centerLeft,
               child: IconButton(
@@ -62,7 +62,7 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
             Column(
               children: [
                 //  Invisible Text: Matches the height of "Team Name"
-                Text(" ", style: AppStyles.textStyleMedium16),
+                Text(' ', style: AppStyles.textStyleMedium16),
 
                 // 📏Same Spacer as inside TeamScore
                 const SizedBox(height: 15),
@@ -71,7 +71,7 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
-                    "VS",
+                    'VS',
                     style: AppStyles.textStyleBold32.copyWith(fontSize: 28),
                   ),
                 ),
@@ -104,7 +104,7 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
                 teamB: widget.teamB,
               );
               getIt<HistoryCubit>().saveMatch(newMatch);
-              
+
               // Clear active match
               await Hive.box(kActiveMatchBox).clear();
 

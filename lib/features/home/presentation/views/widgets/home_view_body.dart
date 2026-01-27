@@ -28,7 +28,7 @@ class HomeViewBody extends StatelessWidget {
                 if (!isActive) {
                   showCustomSnackBar(
                     context,
-                    message: "Select at least 2 players",
+                    message: 'Select at least 2 players',
                     isError: true,
                   );
                   return;

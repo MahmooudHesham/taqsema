@@ -48,6 +48,6 @@ class MatchHistoryListView extends StatelessWidget {
 
   void _deleteMatch(BuildContext context, MatchModel match) {
     context.read<HistoryCubit>().deleteMatch(match);
-    showCustomSnackBar(context, message: "Match deleted");
+    showCustomSnackBar(context, message: 'Match deleted');
   }
 }
