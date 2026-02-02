@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:taqsema/core/utils/app_colors.dart';
@@ -7,6 +9,7 @@ import 'package:taqsema/core/utils/constants.dart';
 import 'package:taqsema/core/utils/service_locator.dart';
 import 'package:taqsema/features/match/data/models/match_model.dart';
 import 'package:taqsema/features/players/data/models/player_model.dart';
+import 'package:taqsema/core/utils/size_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,16 +25,22 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(PlayerModelAdapter());
   Hive.registerAdapter(MatchModelAdapter());
-  
+
   await Future.wait([
     Hive.openBox<PlayerModel>(kPlayersBox),
     Hive.openBox<MatchModel>(kMatchesBox),
     Hive.openBox(kActiveMatchBox),
   ]);
-  
+
   setupServiceLocator();
 
-  runApp(const TaqsemaApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const TaqsemaApp(),
+    ),
+    // const TaqsemaApp(),
+  );
 }
 
 class TaqsemaApp extends StatelessWidget {
@@ -39,8 +48,11 @@ class TaqsemaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       routerConfig: AppRouter.router,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: AppColors.background,

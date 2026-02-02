@@ -49,3 +49,5 @@ key.properties
 **/*.jks
 **/*.keystore
 
+TAQSEMA_BUILD_MANUAL.md
+CODE_MASTERY.md
