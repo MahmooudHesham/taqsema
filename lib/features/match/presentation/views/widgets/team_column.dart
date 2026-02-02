@@ -20,7 +20,7 @@ class TeamColumn extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(title, style: AppStyles.textStyleBold32),
+        Text(title, style: AppStyles.textStyleRegular24),
         const SizedBox(height: 10),
         Flexible(
           child: CompactPlayersList(players: players, isTeamA: isTeamA),

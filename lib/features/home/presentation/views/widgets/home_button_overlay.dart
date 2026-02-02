@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:taqsema/core/utils/app_constants.dart';
 import 'package:taqsema/features/home/presentation/views/widgets/add_player_button.dart';
 import 'package:taqsema/features/home/presentation/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:taqsema/features/match/presentation/views/widgets/generate_team_button.dart';
@@ -27,7 +28,7 @@ class HomeButtonOverlay extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: SafeArea(
-        minimum: const EdgeInsets.only(bottom: 40),
+        minimum: EdgeInsets.only(bottom: AppConstants.navBarBottomPadding),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

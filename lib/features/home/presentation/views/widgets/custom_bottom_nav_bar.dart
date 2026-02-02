@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taqsema/core/utils/app_colors.dart';
+import 'package:taqsema/core/utils/app_constants.dart';
 import 'package:taqsema/core/utils/app_haptics.dart';
 import 'package:taqsema/core/widgets/glass_container.dart';
 
@@ -16,7 +17,7 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlassContainer(
       width: 200,
-      height: 70,
+      height: AppConstants.navBarHeight,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

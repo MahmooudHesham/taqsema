@@ -26,7 +26,9 @@ class PlayersCubit extends Cubit<PlayersState> {
 
       final allPlayersId = players.map((e) => e.id).toSet();
       _currentSelection.removeWhere((id) => !allPlayersId.contains(id));
-      emit(PlayersSuccess(players: players, selectedId: _currentSelection));
+      
+      final sortedPlayers = _sortPlayers(players, _currentSelection);
+      emit(PlayersSuccess(players: sortedPlayers, selectedId: _currentSelection));
     } catch (e) {
       emit(PlayersFailure(errMsg: e.toString()));
     }
@@ -44,8 +46,25 @@ class PlayersCubit extends Cubit<PlayersState> {
       }
       _currentSelection = newSelection;
 
-      emit(PlayersSuccess(players: currentPlayer, selectedId: newSelection));
+      final sortedPlayers = _sortPlayers(currentPlayer, newSelection);
+      emit(PlayersSuccess(players: sortedPlayers, selectedId: newSelection));
     }
+  }
+
+  List<PlayerModel> _sortPlayers(
+      List<PlayerModel> players, Set<String> selection) {
+    final sortedList = List<PlayerModel>.from(players);
+    sortedList.sort((a, b) {
+      final isASelected = selection.contains(a.id);
+      final isBSelected = selection.contains(b.id);
+
+      if (isASelected && !isBSelected) return -1;
+      if (!isASelected && isBSelected) return 1;
+      
+      // Secondary Sort: Alphabetical
+      return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+    });
+    return sortedList;
   }
 
   Future<void> addPlayer({required String name, String? imagePath}) async {

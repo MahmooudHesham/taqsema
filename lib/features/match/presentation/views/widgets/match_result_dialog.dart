@@ -50,13 +50,15 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TeamScoreSelector(
-              teamName: 'Team A',
-              color: AppColors.teamA,
-              score: teamAScore,
-              onIncrement: () => setState(() => teamAScore++),
-              onDecrement: () =>
-                  setState(() => teamAScore > 0 ? teamAScore-- : null),
+            Expanded(
+              child: TeamScoreSelector(
+                teamName: 'Team A',
+                color: AppColors.teamA,
+                score: teamAScore,
+                onIncrement: () => setState(() => teamAScore++),
+                onDecrement: () =>
+                    setState(() => teamAScore > 0 ? teamAScore-- : null),
+              ),
             ),
 
             Column(
@@ -70,20 +72,25 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
                 // Actual VS Text: Now it sits exactly between the buttons
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Text(
-                    'VS',
-                    style: AppStyles.textStyleBold32.copyWith(fontSize: 28),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      'VS',
+                      style: AppStyles.textStyleBold32.copyWith(fontSize: 28),
+                    ),
                   ),
                 ),
               ],
             ),
-            TeamScoreSelector(
-              teamName: 'Team B',
-              color: AppColors.teamB,
-              score: teamBScore,
-              onIncrement: () => setState(() => teamBScore++),
-              onDecrement: () =>
-                  setState(() => teamBScore > 0 ? teamBScore-- : null),
+            Expanded(
+              child: TeamScoreSelector(
+                teamName: 'Team B',
+                color: AppColors.teamB,
+                score: teamBScore,
+                onIncrement: () => setState(() => teamBScore++),
+                onDecrement: () =>
+                    setState(() => teamBScore > 0 ? teamBScore-- : null),
+              ),
             ),
           ],
         ),

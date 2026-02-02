@@ -25,26 +25,29 @@ class TeamScoreSelector extends StatelessWidget {
       children: [
         Text(teamName, style: AppStyles.textStyleMedium16),
         const SizedBox(height: 15),
-        Row(
-          children: [
-            StepperButton(
-              icon: Icons.remove,
-              color: AppColors.secondary,
-              onTap: onDecrement,
-            ),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            children: [
+              StepperButton(
+                icon: Icons.remove,
+                color: AppColors.secondary,
+                onTap: onDecrement,
+              ),
 
-            const SizedBox(width: 10),
+              const SizedBox(width: 10),
 
-            ScoreDisplayBox(color: color, score: score),
+              ScoreDisplayBox(color: color, score: score),
 
-            const SizedBox(width: 10),
+              const SizedBox(width: 10),
 
-            StepperButton(
-              icon: Icons.add,
-              color: AppColors.primary,
-              onTap: onIncrement,
-            ),
-          ],
+              StepperButton(
+                icon: Icons.add,
+                color: AppColors.primary,
+                onTap: onIncrement,
+              ),
+            ],
+          ),
         ),
       ],
     );
