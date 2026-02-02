@@ -28,6 +28,7 @@ void showCustomSnackBar(
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
       duration: _duration,
+      dismissDirection: DismissDirection.horizontal,
     ),
   );
 }
