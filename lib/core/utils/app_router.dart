@@ -5,6 +5,7 @@ import 'package:taqsema/core/utils/service_locator.dart';
 import 'package:taqsema/features/history/presentation/manager/history_cubit/history_cubit.dart';
 import 'package:taqsema/features/history/presentation/views/history_view.dart';
 import 'package:taqsema/features/home/presentation/views/home_view.dart';
+import 'package:taqsema/features/match/data/repos/match_repo.dart';
 import 'package:taqsema/features/match/presentation/manager/match_cubit/match_cubit.dart';
 import 'package:taqsema/features/match/presentation/views/generated_teams_view.dart';
 import 'package:taqsema/features/match/presentation/views/player_selection_view.dart';
@@ -63,12 +64,14 @@ abstract class AppRouter {
             final data = state.extra as Map<String, dynamic>;
             final players = data['players'] as List<PlayerModel>;
             return BlocProvider(
-              create: (context) => MatchCubit()..generateTeams(players),
+              create: (context) =>
+                  MatchCubit(getIt.get<MatchRepo>())..generateTeams(players),
               child: const GeneratedTeamsView(),
             );
           } else {
             return BlocProvider(
-              create: (context) => MatchCubit()..loadActiveMatch(),
+              create: (context) =>
+                  MatchCubit(getIt.get<MatchRepo>())..loadActiveMatch(),
               child: const GeneratedTeamsView(),
             );
           }

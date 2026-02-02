@@ -35,10 +35,7 @@ void main() async {
   setupServiceLocator();
 
   runApp(
-    DevicePreview(
-      enabled: kReleaseMode,
-      builder: (context) => const TaqsemaApp(),
-    ),
+    DevicePreview(enabled: false, builder: (context) => const TaqsemaApp()),
   );
 }
 

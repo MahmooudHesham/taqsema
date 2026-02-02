@@ -1,15 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hive/hive.dart';
-import 'package:taqsema/core/utils/constants.dart';
+import 'package:taqsema/features/match/data/repos/match_repo.dart';
 import 'package:taqsema/features/players/data/models/player_model.dart';
 
 part 'match_state.dart';
 
 class MatchCubit extends Cubit<MatchState> {
-  MatchCubit() : super(MatchInitial());
+  MatchCubit(this.matchRepo) : super(MatchInitial());
 
-  void generateTeams(List<PlayerModel> selectedPlayers) {
+  final MatchRepo matchRepo;
+
+  void generateTeams(List<PlayerModel> selectedPlayers) async {
     emit(MatchLoading());
     try {
       if (selectedPlayers.length < 2) {
@@ -30,10 +31,7 @@ class MatchCubit extends Cubit<MatchState> {
       final teamA = pool.sublist(0, halfIndex);
       final teamB = pool.sublist(halfIndex);
 
-      // Save to Hive
-      final box = Hive.box(kActiveMatchBox);
-      box.put('team_a', teamA);
-      box.put('team_b', teamB);
+      await matchRepo.saveActiveMatch(teamA, teamB);
 
       // Done
       emit(MatchGenerated(teamA: teamA, teamB: teamB));
@@ -44,38 +42,26 @@ class MatchCubit extends Cubit<MatchState> {
 
   void loadActiveMatch() {
     emit(MatchLoading());
-    try {
-      final box = Hive.box(kActiveMatchBox);
-      if (box.isEmpty) {
-        emit(const MatchFailure(errMsg: 'No active match found'));
-        return;
-      }
+    final activeMatch = matchRepo.getActiveMatch();
 
-      final dynamic teamARaw = box.get('team_a');
-      final dynamic teamBRaw = box.get('team_b');
-
-      if (teamARaw != null && teamBRaw != null) {
-        final teamA = List<PlayerModel>.from(teamARaw);
-        final teamB = List<PlayerModel>.from(teamBRaw);
-        emit(MatchGenerated(teamA: teamA, teamB: teamB));
-      } else {
-        emit(const MatchFailure(errMsg: 'Error loading match data'));
-      }
-    } catch (e) {
-      emit(MatchFailure(errMsg: 'Error loading match: $e'));
+    if (activeMatch != null) {
+      emit(
+        MatchGenerated(
+          teamA: activeMatch['team_a']!,
+          teamB: activeMatch['team_b']!,
+        ),
+      );
+    } else {
+      emit(const MatchFailure(errMsg: 'No active match found'));
     }
   }
 
   Future<void> clearActiveMatch() async {
-    final box = Hive.box(kActiveMatchBox);
-    await box.clear();
+    await matchRepo.clearActiveMatch();
   }
 
-  void updateTeams(List<PlayerModel> teamA, List<PlayerModel> teamB) {
-    final box = Hive.box(kActiveMatchBox);
-    box.put('team_a', teamA);
-    box.put('team_b', teamB);
-
+  void updateTeams(List<PlayerModel> teamA, List<PlayerModel> teamB) async {
+    await matchRepo.saveActiveMatch(teamA, teamB);
     emit(MatchGenerated(teamA: teamA, teamB: teamB));
   }
 }
