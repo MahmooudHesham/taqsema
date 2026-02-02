@@ -52,6 +52,7 @@ class _GeneratedTeamsViewBodyState extends State<GeneratedTeamsViewBody> {
         copyOfTeamB.add(player);
       }
     });
+    context.read<MatchCubit>().updateTeams(copyOfTeamA, copyOfTeamB);
   }
 
   @override

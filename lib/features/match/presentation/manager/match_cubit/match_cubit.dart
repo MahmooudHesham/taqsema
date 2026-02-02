@@ -70,4 +70,12 @@ class MatchCubit extends Cubit<MatchState> {
     final box = Hive.box(kActiveMatchBox);
     await box.clear();
   }
+
+  void updateTeams(List<PlayerModel> teamA, List<PlayerModel> teamB) {
+    final box = Hive.box(kActiveMatchBox);
+    box.put('team_a', teamA);
+    box.put('team_b', teamB);
+
+    emit(MatchGenerated(teamA: teamA, teamB: teamB));
+  }
 }
