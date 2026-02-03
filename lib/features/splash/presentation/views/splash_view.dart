@@ -18,18 +18,62 @@ class _SplashViewState extends State<SplashView>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
+  late Animation<double> _scaleAnimation;
+  late Animation<Offset> _slideAnimation;
+  late Animation<double> _spacingAnimation;
+  late Animation<double> _logoFadeAnimation;
+
+  static const _animationDuration = Duration(milliseconds: 2000);
+  static const _splashDuration = Duration(seconds: 3);
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1500),
-    );
-
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    _setupAnimations();
     _controller.forward();
     _navigateToHome();
+  }
+
+  void _setupAnimations() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: _animationDuration,
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.4, 0.8, curve: Curves.easeOut),
+      ),
+    );
+
+    _logoFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
+      ),
+    );
+
+    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.6, curve: Curves.easeOutCubic),
+      ),
+    );
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.2, 0.8, curve: Curves.easeOutQuart),
+          ),
+        );
+
+    _spacingAnimation = Tween<double>(begin: 3.0, end: 8.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.4, 1.0, curve: Curves.decelerate),
+      ),
+    );
   }
 
   @override
@@ -39,8 +83,7 @@ class _SplashViewState extends State<SplashView>
   }
 
   Future<void> _navigateToHome() async {
-    await Future.delayed(const Duration(seconds: 3));
-
+    await Future.delayed(_splashDuration);
     if (!mounted) return;
 
     final box = Hive.box(kActiveMatchBox);
@@ -55,24 +98,50 @@ class _SplashViewState extends State<SplashView>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: FadeTransition(
-          opacity: _fadeAnimation,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgPicture.asset(kAppFullLogoSvg, width: 300),
-              const SizedBox(height: 16),
-              Text(
-                "IT'S KICKOFF TIME.",
-                style: AppStyles.textStyleBold14.copyWith(
-                  color: AppColors.primaryText.withAlpha(180),
-                  letterSpacing: 4,
-                ),
-              ),
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [_buildLogo(), const SizedBox(height: 16), _buildTagLine()],
         ),
       ),
+    );
+  }
+
+  RepaintBoundary _buildLogo() {
+    return RepaintBoundary(
+      child: FadeTransition(
+        opacity: _logoFadeAnimation,
+        child: ScaleTransition(
+          scale: _scaleAnimation,
+          child: SvgPicture.asset(kAppFullLogoSvg, width: 300),
+        ),
+      ),
+    );
+  }
+
+  RepaintBoundary _buildTagLine() {
+    return RepaintBoundary(
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: _buildAnimatedText(),
+        ),
+      ),
+    );
+  }
+
+  AnimatedBuilder _buildAnimatedText() {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return Text(
+          "IT'S KICKOFF TIME.",
+          style: AppStyles.textStyleBold14.copyWith(
+            color: AppColors.primaryText.withAlpha(180),
+            letterSpacing: _spacingAnimation.value,
+          ),
+        );
+      },
     );
   }
 }
