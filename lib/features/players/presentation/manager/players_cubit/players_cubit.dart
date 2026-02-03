@@ -26,9 +26,11 @@ class PlayersCubit extends Cubit<PlayersState> {
 
       final allPlayersId = players.map((e) => e.id).toSet();
       _currentSelection.removeWhere((id) => !allPlayersId.contains(id));
-      
+
       final sortedPlayers = _sortPlayers(players, _currentSelection);
-      emit(PlayersSuccess(players: sortedPlayers, selectedId: _currentSelection));
+      emit(
+        PlayersSuccess(players: sortedPlayers, selectedId: _currentSelection),
+      );
     } catch (e) {
       emit(PlayersFailure(errMsg: e.toString()));
     }
@@ -52,7 +54,9 @@ class PlayersCubit extends Cubit<PlayersState> {
   }
 
   List<PlayerModel> _sortPlayers(
-      List<PlayerModel> players, Set<String> selection) {
+    List<PlayerModel> players,
+    Set<String> selection,
+  ) {
     final sortedList = List<PlayerModel>.from(players);
     sortedList.sort((a, b) {
       final isASelected = selection.contains(a.id);
@@ -60,7 +64,7 @@ class PlayersCubit extends Cubit<PlayersState> {
 
       if (isASelected && !isBSelected) return -1;
       if (!isASelected && isBSelected) return 1;
-      
+
       // Secondary Sort: Alphabetical
       return a.name.toLowerCase().compareTo(b.name.toLowerCase());
     });
@@ -96,18 +100,29 @@ class PlayersCubit extends Cubit<PlayersState> {
     String? name,
     String? imagePath,
   ) async {
+    final currentState = state;
+    if (currentState is! PlayersSuccess) return;
+
     try {
-      if (name != null) {
-        player.name = name.trim();
-      }
-      if (imagePath != null) {
-        player.imagePath = imagePath;
-      }
+      if (name != null) player.name = name.trim();
+      if (imagePath != null) player.imagePath = imagePath;
+
+      final updatedList = List<PlayerModel>.from(currentState.players);
+      final sortedList = _sortPlayers(updatedList, _currentSelection);
+
+      emit(
+        PlayersSuccess(
+          players: sortedList,
+          selectedId: _currentSelection,
+          version: DateTime.now().millisecondsSinceEpoch,
+        ),
+      );
+
       await playersRepo.updatePlayer(player: player);
-      emit(PlayersLoading());
-      await fetchAllPlayers();
+      // await fetchAllPlayers();
     } catch (e) {
       emit(PlayersFailure(errMsg: 'Failed to update player: $e'));
+      fetchAllPlayers();
     }
   }
 }

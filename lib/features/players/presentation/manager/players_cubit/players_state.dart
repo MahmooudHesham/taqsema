@@ -14,11 +14,15 @@ final class PlayersLoading extends PlayersState {}
 final class PlayersSuccess extends PlayersState {
   final List<PlayerModel> players;
   final Set<String> selectedId;
-
-  const PlayersSuccess({required this.players, this.selectedId = const {}});
+  final int version;
+  const PlayersSuccess({
+    required this.players,
+    this.selectedId = const {},
+    this.version = 0,
+  });
 
   @override
-  List<Object?> get props => [players, selectedId];
+  List<Object?> get props => [players, selectedId, version];
 }
 
 final class PlayersFailure extends PlayersState {
