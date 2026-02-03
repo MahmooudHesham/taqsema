@@ -4,7 +4,7 @@ import 'package:taqsema/core/utils/app_constants.dart';
 import 'package:taqsema/core/utils/app_styles.dart';
 import 'package:taqsema/core/utils/size_config.dart';
 
-const _duration = Duration(seconds: 2);
+const _duration = Duration(seconds: 3);
 const _successColor = Color(0xFF029770);
 
 void showCustomSnackBar(
@@ -14,10 +14,14 @@ void showCustomSnackBar(
 }) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      content: Text(
-        message,
-        textAlign: TextAlign.center,
-        style: AppStyles.textStyleRegular16,
+      elevation: 0,
+      content: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: AppStyles.textStyleRegular16,
+        ),
       ),
       backgroundColor: isError ? AppColors.error : _successColor,
       behavior: SnackBarBehavior.floating,
