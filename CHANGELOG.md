@@ -5,16 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.6] - 2026-02-01
+## [1.0.6] - 2026-02-02
 
 ### Added
+- **Cinematic Splash:** Rebuilt the Splash View with a staggered animation system (Logo bounce, tagline slide-in, and dynamic letter-spacing).
+- **Optimization:** Enabled R8 Minification and Resource Shrinking for smaller, faster Android builds.
+- **Safety:** Added production-ready logic to automatically disable debug tools (Device Preview) in release builds.
 - **Responsive Design:** Introduced `SizeConfig` utility for screen-aware scaling.
 - **Adaptive UI:** Updated `AppStyles` to use proportional font sizes based on device width (reference: 375px).
 - **UX:** Implemented "Scale-Down Only" strategy to prevent oversized UI elements on large devices while maintaining readability on small ones.
 
 ### Changed
+- **Architecture:** Decoupled `MatchCubit` from Hive by abstracting persistence into the `MatchRepo`.
+- **Persistence:** Improved data synchronization—manual team adjustments (Drag & Drop) are now instantly saved to the database.
+- **Performance:** Implemented **Optimistic Updates** in `PlayersCubit` for instant UI feedback when editing players.
+- **Responsiveness:** Converted static UI heights to dynamic getters (e.g., Nav Bar and SnackBar positioning) for perfect scaling across all device sizes.
+- **Organization:** Moved `MatchResultDialog` to the Match feature for better architectural cohesion.
 - **UI:** Refactored `SquadCounterHeader` to support directional animations (Slide Up for increment, Slide Down for decrement) with `easeOutBack` curves.
 - **UI:** Cleaned up `PlayerSelectionView` logic by simplifying state handling and extracting content sub-widgets.
+
+### Fixed
+- **UI Bug:** Resolved an issue where the SnackBar would overlap the floating navigation bar on devices with large safe areas.
+- **Logic:** Fixed a bug where manual team changes were lost if the app was closed before finishing a match.
 
 ## [1.0.5] - 2026-01-27
 
