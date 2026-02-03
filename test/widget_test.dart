@@ -9,9 +9,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:taqsema/features/match/data/models/match_model.dart';
 import 'package:taqsema/features/players/data/models/player_model.dart';
-import 'package:taqsema/features/splash/presentation/views/splash_view.dart';
-import 'package:taqsema/main.dart';
-import 'package:taqsema/core/utils/service_locator.dart';
 
 void main() {
   setUpAll(() async {

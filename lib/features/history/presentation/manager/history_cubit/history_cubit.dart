@@ -29,6 +29,7 @@ class HistoryCubit extends Cubit<HistoryState> {
       await matchRepo.deleteMatch(match);
       getAllMatches();
     } catch (e) {
+      emit(HistoryFailure(errMsg: e.toString()));
       getAllMatches();
     }
   }
